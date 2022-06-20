@@ -7,22 +7,30 @@ let items3 = ['🍌', '🥝', '🍇'];
 let items4 = ['🍌', '🍓', '🍇', '🍓'];
 
 
-// 1
-items1.forEach(el => {
-    if(el === '🍓'){
-        el = '🥝'
+function replace (arr, from, to){
+    const replaced = Array.from(arr);
+    for(let i=0; i<replaced.length; i++){
+        if(replaced[i] === from){
+            replaced[i]= to
+        }
     }
-})
+    return replaced;
+}
 
-console.log(items1);
+const result = replace(items1, '🍓', '🥝')
+console.log(result);
 
-//2 
+
+// 요소가 몇개 있는지 카운트 하기
 let cnt = 0;
-items2.forEach(el => {
-    if(el === '🥝'){
-       cnt ++;
+function counter(arr, item){
+    for(let i=0; i<arr.length; i++){
+        if(arr[i] === item){
+            cnt ++;
+        }
     }
-})
-console.log("cnt: ", cnt);
+    return cnt;
+}
 
-
+const result2 = counter(items2, '🥝')
+console.log(result2);
