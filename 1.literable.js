@@ -8,6 +8,8 @@ for (const item in obj){
     console.log(item)
 }
 
+Array
+
 const iterator = array.values();
 // console.log(iterator.next());
 // console.log(iterator.next());
