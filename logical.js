@@ -2,16 +2,18 @@
 
 const obj1 = { name: '🐶'};
 const obj2 = { name: '🐱', owner: 'Jishu'};
+let obj3;
+let obj4;
 
 if (obj1 && obj2){
-    console.log('둘다 true')
+    console.log('둘다 true');
 }
 
 if (obj1 || obj2){
-    console.log('둘다 true')
+    console.log('둘 중 하나 true');
 }
 
-let result = obj1 && obj2;
+let result = obj3 && obj4;
 console.log(result);
 
 let result2 = obj1 || obj2;
@@ -39,8 +41,21 @@ console.log(333, obj1)
 console.log(444, obj2)
 
 
+console.clear();
+
 // null 또는 undefined 인걸 확인할 때,
-// let item = { price: 1 };
-let item;
+let item = { price: 1 };
+// let item;
 const price = item && item.price;
 console.log(price);
+
+// 기본값을 설정
+function print(message) {
+    const text = message || 'Hello';
+    console.log(text);
+}
+print();
+print(undefined);
+print(null);
+print(0);
+print('');
