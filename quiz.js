@@ -1,23 +1,32 @@
-
-function runInDelay(callback, seconds){
-    if(!callback){
-        throw new Error('콜백함수 없음')
+class Animal {
+    constructor(name, emoji) {
+        this.name = name;
+        this.emoji = emoji;
     }
-    
-    if(!seconds || seconds < 0 ){
-        throw new Error('seconds는 0보다 커야함')
-    } 
-    
-    setTimeout(callback, seconds * 1000)    
-};
-
-
-function car(){
-    console.log('🚓')
+    printName(){
+        console.log(`${this.name} ${this.emoji}`);
+    }
 }
 
-try {
-    runInDelay(car, -3);
-} catch(error) {
-    console.log(error)
+class Dog extends Animal{
+    play(){
+        console.log('같이 놀자규')
+    }
 }
+class Tiger extends Animal{
+    hunt(){
+        console.log('사냥하자규~~')
+    }
+}
+const dog1 = new Dog('멍멍', '🐶')
+const tiger1 = new Tiger('어흥', '🐯')
+
+dog1.printName();
+tiger1.printName();
+dog1.play();
+tiger1.hunt();
+
+console.log(dog1 instanceof Dog);
+console.log(dog1 instanceof Animal);
+console.log(dog1 instanceof Tiger);
+console.log(tiger1 instanceof Tiger);
