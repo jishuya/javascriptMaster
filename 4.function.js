@@ -91,3 +91,83 @@ const sumNum = (...args) => {
 
 console.log(sumNum(1, 2, 3));
 
+
+console.clear();
+  
+
+printTest();
+
+function printTest(){
+    console.log('This is test...');
+}
+
+console.log( '---------------');
+
+// printTest2();
+
+const printTest2 = function (){
+    console.log('This is test2...');
+}
+
+
+console.clear();
+
+let sumTest= (a, b) => a + b;
+
+console.log(sumTest(1,2));
+
+
+const printName = (name) => ({ Name : name});
+
+console.log(printName('jishu'));
+
+
+
+// 즉각적으로 호출하는 함수 - 생성자 함수 
+(function sayHi() {
+    console.log('Hi');
+})();
+
+
+// 스코프 : 변수에 접근 할 수 있는 범위 
+// 1. 함수스코프: 함수가 선언될 때마다 스코프가 생성. 함수 내에서 선언한 변수들은 함수 내에서만 접근 가능 
+// 2. 블록스코프: {} 블록이 생성된 때마다 스코프 생성. const, let은 블록 스코프 but var는 함수 스코프
+
+
+// 기명함수표현식?
+
+let countdown = function printCountDown(n){
+    console.log(n);
+    if (n === 0) {
+        console.log('End!')
+    } else {
+        printCountDown(n -1);
+    }
+};
+
+let myFunction = countdown;
+countdown = null;
+
+myFunction(5);
+
+
+
+console.clear();
+
+
+// 즉시 실행함수
+const firstName = 'jishu';
+const lastName = 'Lim';
+
+const greeting = (()=>{
+    const fullName = `my name is ${firstName} ${lastName} :)`
+    return `Hi, ${fullName}`
+})();
+
+
+// 콜백함수 - 나중에 호출해주는 함수 
+
+// 일급 객체 first class object
+// : 함수가 일반 객체처럼 모든 연산이 가능한 수준
+
+
