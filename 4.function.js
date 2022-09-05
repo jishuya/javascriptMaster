@@ -171,3 +171,107 @@ const greeting = (()=>{
 // : 함수가 일반 객체처럼 모든 연산이 가능한 수준
 
 
+// 전달된 action은 콜백함수 이다 
+
+ const add = (a, b) => a + b;
+ const multiply = (a, b) => a * b;
+
+ function calulator(a, b, action){
+    if (a < 0 || b <0){
+        return;
+    }
+    let result = action(a, b);
+    console.log(result);
+    return result;
+ }
+
+ calulator(1, -2, add);
+ calulator(1, 2, multiply);
+
+
+ console.clear();
+ 
+ // 주어진 숫자만큼 0부터 순회하는 함수
+ // 순회하면서 특정한 일을 수행해야 함
+ // 5, 순회하는 숫자를 다 출력하고 싶음
+ // 5, 순회하는 숫자의 두배 값을 다 출력하고 싶음
+
+
+
+ function iterate(max, action){
+    let i = 0; 
+    while (i < max) {
+        let result = action(i)
+        console.log('result: ', result)
+        i += 1;
+    }
+ }
+
+ function double(i){
+    const double = i * 2;
+    console.log(i)
+    return double;
+ }
+
+ iterate(10, double);
+
+
+ console.clear()
+
+
+ // 함수에서 전달받은 인자를 변경하는 건 좋지 않다 
+ function printNum(num) {
+    num = 3;
+    return num; 
+ }
+
+ const value = 5;
+ console.log(printNum(value));
+
+
+ function printObj(obj) {
+    obj.job = 'developer';
+    return obj;
+ }
+
+ const friend = { job: 'student'};
+ console.log(printObj(friend))      // { job: 'developer' }
+
+
+ console.clear();
+
+ function changeJob(obj) {
+    return {...obj, job: 'developer'};
+ }
+
+ const collegue = { name: 'hana', job : 'teacher', age: 25};
+ console.log(changeJob(collegue))
+
+
+
+ const sayHi = [
+    function() {
+        console.log('Hi😉')
+    },
+ ];
+
+ sayHi[0]();
+
+ const sayHello = {
+    greeting : 'Hi',
+    printHello : function(){
+        console.log('Hi😉');
+    }
+ }
+
+ sayHello.printHello();
+
+
+function sayCheese() {
+    return function sayHi() {
+        console.log('Hi😉');
+    }
+ }
+
+ const cheese = sayCheese(); 
+ cheese();
