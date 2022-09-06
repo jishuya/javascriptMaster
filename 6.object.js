@@ -53,3 +53,43 @@ function deleteMember(obj, key){
 }
 console.log(deleteMember(member, 'class'));     // true
 console.log(Object.keys(member).length);    // 2
+
+
+const x = 0;
+const y = 0;
+const coordinate = { x,  y };
+console.log(coordinate);
+
+function maskeObject(x, y){
+    return {x, y}
+}
+console.log(maskeObject(x, y));
+
+const weather = {
+    when : 'today',
+    show : function () {
+        console.log(`${this.when}: 🌞`)
+    }
+};
+
+weather.show();
+
+
+// 생성자 함수 : 특정한 탬플렛대로 오브제트를 만들어주는 함수
+// 1. 생성자함수는 대문자로 시작한다.
+// 2. 함수 안에서 this를 사용하면 객체자신을 가르킬 수 있다
+
+function showWhether(when, emoji){
+    this.when = when;
+    this.emoji = emoji;
+    this.printWhether = () => {
+        console.log(`${this.when}: ${this.emoji}`)
+    };
+}
+
+const tomorrow = new showWhether('tomorrow', '🌨');
+const today = new showWhether('today', '🌪');
+console.log(tomorrow);
+console.log(today);
+tomorrow.printWhether();
+today.printWhether();
