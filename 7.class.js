@@ -25,17 +25,26 @@ console.clear();
 // 1. 생성자 함수
 // 2. 클래스 
 
+// stattic 정적프로퍼티, 메소드
 class Forecast {
     // 생성자 : new 키워드로 객체를 생성할 때 호출되는 함수 
+    static DEFAULT_WHETHER = '🌤';
     constructor (when, emoji) {
         this.when = when;
         this.emoji = emoji;
     }
-    printWhether () {
-        console.log(`${this.when} : ${this.emoji}`)
+    // 클래스 레벨의 메서드
+    static printWhether () {
+        return new Forecast('yesterday', '🌩');
     }
 }
 
+const yesterday = Forecast.printWhether();
+console.log(yesterday);
+console.log(Forecast.DEFAULT_WHETHER);
+
+
+// sunny, rainny는 Forcast 클래스의 인스턴스이다 
 const sunny = new Forecast('today', '🌞');
 const rainny = new Forecast('tomorow', '🌧');
 
@@ -43,4 +52,4 @@ console.log(sunny);
 console.log(rainny);
 console.log(sunny.when);
 console.log(rainny.emoji);
-sunny.printWhether();
+// sunny.printWhether();
