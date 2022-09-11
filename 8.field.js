@@ -18,32 +18,33 @@ console.clear();
 
 
 
+// Access Poperty (접근자 프로퍼티)
 class Student {
     constructor(name, age) {
         this.name = name;
         this.age = age;
         // this.selfIntroduction = `I'm ${this.name}. I'm ${this.age}yaers old.`;
     }
+
     get selfIntroduction(){
-        return `I'm ${this.name}. I'm ${this.age}yaers old.`;
+        return `I'm ${this.name}. I'm ${this.age}yaers old :)`;
     }
+
     set selfIntroduction(value){
         console.log('set', value)
     }
+
     introduce() {
-        return `I'm ${this.name}. I'm ${this.age}yaers old.`;
+        return `I'm ${this.name}. I'm ${this.age}yaers old ;)`;
     }
 }
 
-const hyena = new Student('hyena', 25);
-// console.log(hyena.introduce());
-// 생성자가 생성된 다음에 속성 바꾸기
-// selfIntroduction에 접근할 때마다 업데이트 된 걸로 접근하고 싶다면? 
-// get을 사용한다. 
-hyena.age = 30;
-console.log(111, hyena.age);
-console.log(222, hyena.selfIntroduction);
-
-// set
-hyena.selfIntroduction = 'siwon';
+// 생성자에서 한번 만들어지고 업데이트 시키고 싶어
+const heesu = new Student('heesu', 26);
+heesu.age = 30;
+console.log(11, heesu.age);
+// selfIntroduction - 접근을 하면 get이 호출
+console.log(22, heesu.selfIntroduction);
+// selfIntroduction - 할당을 하면 set이 호출 
+heesu.selfIntroduction = 'siwon';
 
