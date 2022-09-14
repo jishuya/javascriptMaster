@@ -43,6 +43,7 @@ console.clear();
 const isTrue = new Boolean(true);
 console.log(111, isTrue.valueOf)
 
+
 /**
  *  Falsy
  * 0
@@ -61,3 +62,6 @@ console.log(111, isTrue.valueOf)
  * []
  * {}
  */
+
+false
+true
