@@ -82,3 +82,71 @@ function isEqual2(original, expected){
 console.log(isEqual(1, 1));
 console.log(isEqual(0.1, 0.1));
 console.log(isEqual(num, 0.1));
+
+console.clear()
+
+// 수학관련 함수들 Math
+console.log(Math.E); 
+console.log(Math.PI); 
+
+// Static method
+// 절대값
+console.log(Math.abs(-10));
+//올림
+console.log(Math.ceil(1.4));
+// 내림
+console.log(Math.floor(1.4));
+// 반올림
+console.log(Math.round(1.4));
+// 정수만 반환
+console.log(Math.trunc(1.2323))
+// 최대 최솟값을 찾기 
+console.log(Math.max(1,3,5));
+console.log(Math.min(2,3,5));   
+// 제곱근
+console.log(Math.sqrt(9));
+// 0~1사이 랜덤값을 반환
+console.log(Math.random());
+console.log(Math.round(Math.random() * 10 +1));
+
+ 
+console.clear();
+
+// 문자열 함수들 
+const textObj = new String('Hello World');
+const text = 'Hello World';
+console.log(textObj);
+console.log(text);
+
+
+console.log(text[0])
+console.log(text[1])
+console.log(text[2])
+console.log(text.charAt(0))
+console.log(text.length)
+console.log(text.indexOf('o'))
+console.log(text.lastIndexOf('l'))
+console.log(text.includes('W'))
+console.log(text.includes('y'))
+console.log(text.startsWith('He'))
+console.log(text.endsWith('He'))
+console.log(text.toUpperCase())
+console.log(text.toLowerCase())
+
+console.log(text.substring(0, 2));
+console.log(text.slice(-2));
+
+const space = '          s   pace   ';
+console.log(space.trim())
+
+const longText = 'Get to the point';
+console.log(longText.split(' '));
+console.log(longText.split(' ', 2));
+
+
+console.clear(); 
+
+// 날짜관련 함수들
+console.log(new Date());
+console.log(new Date('Jun 5, 2022'));
+
