@@ -1,28 +1,54 @@
-// function RunInDelay(callback, seconds){
-//     if(!seconds || seconds < 0){
-//         throw new Error('seconds가 0보다 작아요')
-//     }
+const pencil = {item: '✏', price: 1000 };
+const scissors = {item: '✂', price: 3000 };
+const book = {item: '📕', price: 5000};
 
-//     setTimeout(callback, seconds*1000)
-// }
+const student1 = [pencil, scissors];
+const student2 = Array.from(student1);
 
-// try{
-//     RunInDelay(()=>{console.log('타이머완료')}, -2)
-// } catch {
-//     console.log(error)
-// }
+console.log('hana: ', student1);
+console.log('nahee: ', student2);
+
+student1.push(book);
+console.log('hana: ', student1);
+console.log('nahee: ', student2);
+
+pencil.price = 4000;
+console.log('hana: ', student1);
+console.log('nahee: ', student2);
 
 
-function runInDelay(seconds){
-    return new Promise((resolve, reject)=>{
-        if(!seconds || seconds < 0){
-            reject(new Error( 'seconds가 0보다 작음'))
+let items2 =['🍌', '🥝', '🍇', '🥝', '🥝'];
+
+let items3 = ['🍌', '🥝', '🍇'];
+
+let items4 = ['🍌', '🍓', '🍇', '🍓'];
+
+function match(input, output){
+    let result = []
+    for(let i =0; i<input.length; i++){
+        if(output.includes(input[i])){
+            result.push(input[i])
         }
-        setTimeout(resolve, seconds *1000)
-    });
+    }
+
+    return result
 }
 
-runInDelay(2)
-    .then(()=>console.log('타이머 완료!'))
-    .catch(console.error)
-    .finally(()=>console.log('끝났다'))
+console.log(match(items3, items4))
+
+function getPrint(){
+    return function () {
+        console.log('Hi')
+    };
+};
+
+const sayHi = getPrint();
+
+sayHi();
+
+const array1 = [5, 12, 8, 130, 44];
+
+const found = array1.find(element => element > 10);
+
+console.log(found);
+// expected output: 12
