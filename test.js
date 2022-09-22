@@ -17,24 +17,47 @@ console.log('hana: ', student1);
 console.log('nahee: ', student2);
 
 
+console.clear();
+
+
+let items1 = ['🍌', '🍓', '🍇', '🍓'];
+
+items1.forEach((x, idx) => {
+    if (x === '🍓'){
+        items1[idx] = '🥝'
+    };
+})
+console.log(items1)
+
+
+
 let items2 =['🍌', '🥝', '🍇', '🥝', '🥝'];
+
+let count = 0
+
+for (let x of items2){
+    if(x === '🥝'){
+        count ++;
+    }
+}
+console.log(999, count)
+
+
 
 let items3 = ['🍌', '🥝', '🍇'];
 
 let items4 = ['🍌', '🍓', '🍇', '🍓'];
 
-function match(input, output){
-    let result = []
-    for(let i =0; i<input.length; i++){
-        if(output.includes(input[i])){
-            result.push(input[i])
+
+items4.forEach(a => {
+    items3.forEach(b=>{
+        if(a === b){
+            console.log(a)
         }
-    }
+    })
+})
 
-    return result
-}
-
-console.log(match(items3, items4))
+console.clear();
 
 function getPrint(){
     return function () {
@@ -46,9 +69,20 @@ const sayHi = getPrint();
 
 sayHi();
 
-const array1 = [5, 12, 8, 130, 44];
 
-const found = array1.find(element => element > 10);
+console.clear();
 
-console.log(found);
-// expected output: 12
+
+const fruits = ['🍌', '🥝', '🍇', '🍅', '🍇'];
+
+fruits.forEach((item, idx, array)=>{
+    console.log(item, idx, array)
+})
+
+const hena = {id: '🧑', score: 10 };
+const nawon = {id: '🎅', score: 60 };
+const heesu = {id: '👳‍♂️', score: 90};
+const students = [hena, nawon, heesu];
+
+const result = students.find(item => item === '🍇')
+console.log(result);
