@@ -34,32 +34,57 @@ while(true){
 
 
 
-// 5이상의 큰 숫자들의 평균
+    
 
-const nums = [3, 16, 25, 4, 34, 21];
 
-function Test(arr){
-    let count = 0;
-    let sum = 0;
-    arr.forEach((el, idx) => {
-        if(el >= 5) {
-            sum += el;
-            count++
-            console.log('el: ', el, 'sum: ', sum, 'count: ', count)
+    // for of -> 이터러블 프로토콜을 따라야합니다 
+    // 객체 안에 Symbol.iterator 만들면 된다 
+
+    const multiple = {
+        [Symbol.iterator]() {
+            const max = 10;
+            let num = 0;
+            return {
+                next() {
+                    return { value: num++ *2, done : num > max};
+                }
+            }
         }
-    });
-    return sum / count;
+    }
+
+
+    for (let item of multiple){
+        console.log(item);
+    }
+
+console.clear()
+
+function makeIterable(initialValue, maxValue, callback){
+    return {
+        [Symbol.iterator](){
+            let num = initialValue;
+            return {
+                next() {
+                    return {value: callback(num++), done: num > maxValue};
+                }
+            }
+        }
+    }
 }
 
-const result = Test(nums);
-console.log(result);
+const multiple2 = makeIterable(0, 5, (n)=> n*2);
+for (const num of multiple2){
+    console.log(num.value);
+}
 
 
 
 
-const result2 = nums
-    .filter(el=> el >= 5)
-    .reduce((avg, num, _, array)=> avg + num /array.length, 0)
 
-    console.log(result2);
-    
+
+
+    // 키워드 찾기
+    // 1. value, maxValue, callback n*2
+
+
+    /** GENERATOR : Iterator를 생성해주는 것*/
