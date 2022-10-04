@@ -28,3 +28,19 @@ try{
 }
 
 console.log('모두 출력 끝!')
+
+
+
+fetch('http~~~')
+  .then((res)=> res.text())
+  .then((result)=>console.log(result))
+
+
+// async, await 로 변경
+async function fetchAndPrint(){
+  const response = await fetch('http~~~');
+  const result = await response.text()
+  console.log(result);
+}
+
+fetchAndPrint()
