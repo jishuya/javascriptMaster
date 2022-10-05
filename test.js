@@ -1,88 +1,63 @@
-const pencil = {item: '✏', price: 1000 };
-const scissors = {item: '✂', price: 3000 };
-const book = {item: '📕', price: 5000};
+// 콜백 
+// 비동기 콜백? 동기 콜백?
+// 비동기 코드를 깔끔하게 쓰는 promise
+// 비동기 코드로 만드는 async, await
 
-const student1 = [pencil, scissors];
-const student2 = Array.from(student1);
-
-console.log('hana: ', student1);
-console.log('nahee: ', student2);
-
-student1.push(book);
-console.log('hana: ', student1);
-console.log('nahee: ', student2);
-
-pencil.price = 4000;
-console.log('hana: ', student1);
-console.log('nahee: ', student2);
+// 자바스크립트 실행순서 (콜스택)
 
 
-console.clear();
+ // 자바스크립트에서 동적으로 객체를 생성하는 경우 Memory Heap에 저장된다
+ // 자바스크립트는 씽글쓰레드 - 한번에 하나의 일만 처리할 수있다 
+
+// 그리고 기본적으로 동기적으로 진행
+// 호출 순서가 콜백에 저장된 
+
+// 자바스크립트 언어 자체는 동기적으로 작성
+// 런타임 환경에서 제공해주는, 호스트 환경에서 제공해주는 다양한 API가 있다 
+// 브라우저라면 웹 API가 있다 
+// 요런 웹API는 멀리쓰레드 환경에서 작동하기 때문에 동시에 여러가지 일을 수행 가능하다
 
 
-let items1 = ['🍌', '🍓', '🍇', '🍓'];
-
-items1.forEach((x, idx) => {
-    if (x === '🍓'){
-        items1[idx] = '🥝'
-    };
-})
-console.log(items1)
-
-
-
-let items2 =['🍌', '🥝', '🍇', '🥝', '🥝'];
-
-let count = 0
-
-for (let x of items2){
-    if(x === '🥝'){
-        count ++;
+function runInDelay(callback, seconds){
+    if(!callback){
+        console.log('callBack 주세용')
+        return;
+    } else {
+        if (seconds < 0) {
+            throw new Error('0보다 작은 시간은 안되용')
+        } else {
+            setTimeout(()=>{
+                callback()
+                console.log('히힛')
+            }, seconds)
+        }
     }
 }
-console.log(999, count)
 
 
 
-let items3 = ['🍌', '🥝', '🍇'];
-
-let items4 = ['🍌', '🍓', '🍇', '🍓'];
-
-
-items4.forEach(a => {
-    items3.forEach(b=>{
-        if(a === b){
-            console.log(a)
-        }
-    })
-})
-
-console.clear();
-
-function getPrint(){
-    return function () {
-        console.log('Hi')
-    };
-};
-
-const sayHi = getPrint();
-
-sayHi();
+try {
+    // runInDelay(()=>{
+    //     console.log(999)
+    // }, 2000);
+    runInDelay(()=>{
+        console.log('헤헤')
+    }, -4);
+} catch (err){
+    console.log(err)
+}
 
 
-console.clear();
+try {
+    const response = await fetch('https://learn.codeit.kr/api/menus');
+    const menus = await response.json();
+    const menu = await pick(menus);
+    console.log(`Today's lunch is ${menu.name}~`);
+  } catch (error) {
+    console.log(error.message);
+  } finally {
+    console.log('Random Menu candidates change everyday');
+  }
+}
 
-
-const fruits = ['🍌', '🥝', '🍇', '🍅', '🍇'];
-
-fruits.forEach((item, idx, array)=>{
-    console.log(item, idx, array)
-})
-
-const hena = {id: '🧑', score: 10 };
-const nawon = {id: '🎅', score: 60 };
-const heesu = {id: '👳‍♂️', score: 90};
-const students = [hena, nawon, heesu];
-
-const result = students.find(item => item === '🍇')
-console.log(result);
+getRandomMenu();
