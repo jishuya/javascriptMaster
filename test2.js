@@ -5,16 +5,16 @@
 // Consumer : 만들어진 데이터를 소비함
 
 
-function runInDelay(seconds){
-    return new Promise((resolve, reject)=>{
-       if (!seconds || seconds < 0) {
-        reject(new Error('secondes가 0보다 작음'))
-       }
-       setTimeout(()=>{
-            resolve(); // setTimeOut이 잘 되면 resolve 함수를 호출 
-        }, seconds*1000)
-    });
-};
+// function runInDelay(seconds){
+//     return new Promise((resolve, reject)=>{
+//        if (!seconds || seconds < 0) {
+//         reject(new Error('secondes가 0보다 작음'))
+//        }
+//        setTimeout(()=>{
+//             resolve(); // setTimeOut이 잘 되면 resolve 함수를 호출 
+//         }, seconds*1000)
+//     });
+// };
 
 // runInDelay(2)
 //     .then(()=>{
@@ -35,7 +35,10 @@ function getLeaves(flower) {
     
 // b
 function getFlower(bud) {
-    return Promise.resolve(`${bud} => 🌹`);
+    // return Promise.resolve(`${bud} => 🌹`);
+    return Promise.resolve(
+        setTimeout(()=>{return `${bud} => 🌹`}, 1000)
+    )
 }
 
 // a
@@ -43,8 +46,8 @@ function getSprout() {
     // return new Promise((resolve, reject)=>{
     //     resolve(`start => 🌱`)
     // })
-    // return Promise.resolve(`start => 🌱`);
-    return Promise.reject(new Error('에러발생'))
+    return Promise.resolve(`start => 🌱`);
+    // return Promise.reject(new Error('에러발생'))
 }
 
 getSprout()
@@ -52,3 +55,16 @@ getSprout()
     .then(getFlower)
     .then(getLeaves)
     .then(console.log)
+
+
+
+// const user = '안녕';
+// function printUser(user){
+//     console.log(test)
+// };
+
+
+// user.printUser()
+// user.printUser()
+// user.printUser()
+// user.printUser()
