@@ -15,29 +15,39 @@ function feelGood() {
   }
   
   function feelSoso() {
-    return Promise.reject(new Error('So so...'));
+    return Promise.reject(new Error('So so...🤨'));
   }
   
-  // 바나나와 사과를 같이 가지고 오기
-  feelGood() //
-    .then((good) =>
-    feelBad() //
-        .then((bad) => [good, bad])
-    )
+
+  // 1. Promise를 사용했을 때
+  // function whatFeeling(){
+  //   return feelGood() //
+  //   .then((good) =>
+  //   feelBad() //
+  //       .then((bad) => [good, bad])
+  //   )
+  // };
+  
+  // whatFeeling()
+  // .then((result)=> console.log('1 + 2초 후: ', result));
+
+
+  //2. Async를 사용했을 떄
+async function HowFeeling(){
+  const good = await feelGood()
+  const bad = await feelBad()
+  const soso = await feelSoso()
+  return [good, bad, soso]
+}
+
+// HowFeeling()
+//   .then((result)=> console.log('1 + 2초 후: ', result));
+
+// 3. Async 사용 시 에러 잡을 떄 
+try{
+  HowFeeling()
     .then((result)=> console.log('1 + 2초 후: ', result));
-  
-//   // Promise.all 병렬적으로 한번에 모든 Promise들을 실행!
-Promise.all([feelGood(), feelBad()])
-  .then((feeling)=> console.log('Promise.all, 2초 후:', feeling))
-  
-  // Promise.race 주어진 Promise중에 제일 빨리 수행된것이 이김!
-Promise.race([feelGood(), feelBad()])
-  .then((feeling) => console.log('Promise.race, 1초 후:' , feeling))
-  
-  Promise.all([feelGood(), feelBad(), feelSoso()]) //
-    .then((feeling) => console.log('Promise.all-error:', feeling))
-    .catch(console.log);
-  
-    Promise.allSettled([feelGood(), feelBad(), feelSoso()]) //
-    .then((feeling) => console.log('Promise.all-error:', feeling))
-    .catch(console.log);
+}catch(error){
+  console.error(error)
+}
+

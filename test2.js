@@ -68,3 +68,16 @@ getSprout()
 // user.printUser()
 // user.printUser()
 // user.printUser()
+
+
+
+function fetchFruits(){
+    return getBanana()
+        .then((banana)=>
+            getApple()
+            .then((apple)=> [banana, apple])
+        )
+}
+
+fetchFruits()
+    .then((fruits)=> console.log(fruits))
