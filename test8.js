@@ -53,3 +53,66 @@ Object.defineProperties(student, {
 
 })
 console.log(student);
+
+
+
+
+//잠깐 클래스 복습하기 
+/** 
+ * 클래스 
+ * 추상화, 캡슐화, 상속, 다형성
+ * 
+ */
+
+// 고전적인 방법
+function creatUser(email, birth){
+  const user = {
+    email,
+    birth,
+    buy(item){
+      console.log(`${this.email} buy ${item}`)
+    }
+  }
+  return user;
+}
+
+
+const user1 = creatUser('aaa@naver.com', '2020-01-01');
+
+
+// 고전적인 방법
+function User(email, birth){
+    this.email,
+    this.birth,
+    this.buy= function(item){
+      console.log(`${this.email} buy ${item}`)
+    }
+}
+
+
+const user2 = new User('aaa@naver.com', '2020-01-01');
+
+console.clear();
+
+class Fruit{
+  static MAX_FRUITS = 4;
+  constructor(name, emoji){
+    this.name = name;
+    this.emoji = emoji;
+    
+  }
+  static makefruits(){
+    // 클래스 레벨의 메서드는 this를 참조할 수 없다
+    return new Fruit('banana', '🍌')
+  }
+  display(){
+    console.log(`${this.name}, ${this.emoji}` )
+  }
+}
+
+const apple = new Fruit('apple', '🍎' )
+console.log(apple)
+
+const banana = Fruit.makefruits();
+console.log(banana)
+console.log(Fruit.MAX_FRUITS);
