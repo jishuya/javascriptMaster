@@ -116,3 +116,6 @@ console.log(apple)
 const banana = Fruit.makefruits();
 console.log(banana)
 console.log(Fruit.MAX_FRUITS);
+
+
+// 클래스 복습하기 

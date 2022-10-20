@@ -1,111 +1,67 @@
-// 주어진 배열에서 중복을 제거하라
-const fruits = ['🍌', '🍎', '🍇', '🍌', '🍎', '🍑'];
+// 클래스: 추상화, 캡슐화, 상속, 다형성
 
-function removeDuplication(array){
-    return [...new Set(array)];
+/**
+ * 클래스란 
+ * 현실 또 가는 가상세계에 존재하는 것을 
+ * 프로그램 상에서 쓸 수 있도록 설계하는 것을 말한다.
+ * 외부에서 클래스의 내부를 모르더라도 공개된 
+ * 프로퍼티와 메소드를 잘 쓸 수 있도록 정의를 잘 해야한다.
+ */
+
+/** 캡슐화
+ * 캡슐화는 감싸는거 밖에서 바로 접근하지 못하게 한다
+ * 가져다가 쓰는건 get 
+ * sodyddmf rhclsmsrjt set을 사용한다 
+ * 외부에서 함부로 접근하면 안되는 프로퍼티나 메소드는 get이나 set을 사용해서 캡슐화한다.
+ * 
+ */
+
+/**
+ * 상속
+ * 부모의 클래스를 자식클래스가 물려 받는 것
+ */
+
+class User{
+    constructor(name, item){
+        this.name = name;
+        this.item = item;
+    }
+    buy(item){
+        console.log(`${this.name} bought ${item}`);
+    }
+    get email(){
+        return this._email
+    }
+
+    set email(address){
+        if(address.includes('@')){
+            this._email = address;
+        } else {
+            throw new Error('Invalid email address')
+        }
+    }
 }
 
-console.log(removeDuplication(fruits));
+class PremiumUser extends User{
+    constructor(name, email, lever){
+        super(name, email);
+        this.level = lever;
+    }
 
-
-// 주어진 두 세트의 공통된 아이템만 담고 있는 세틀를 만들어라
-const set1 = new Set([1, 2, 3, 4, 5]);
-const set2 = new Set([1, 2, 3]);
-
-function findIntersection(set1, set2){
-    const array = [...set1].filter((el)=>{set2.has(el)});
-    return new Set(array); 
+    streamMusicForFree(){
+        console.log(`Free music streaming for ${this.name}`)
+    }
 }
 
-console.log(findIntersection(set1, set2))
+const Puser1 = new PremiumUser('gu', 'gu@naver.com', 1);
+const Puser2 = new PremiumUser('gu', 'gu@naver.com', 1);
+const Puser3 = new PremiumUser('gu', 'gu@naver.com', 1);
 
-
-// 잠깐 Array 복습 
-
-// forEach, map
-// forEach는 리턴 값이 없고, map은 리턴 값이 있다. 
-
-const firstNames = ['hana,', 'hyena', 'minseo', 'uvin', 'heebin'];
-const lastNames = ['Kim', 'Park', 'Lee', 'kang', 'choi'];
-
-firstNames.forEach((el, idx, arr)=>{
-    console.log(`My name is ${el} ${lastNames[idx]}😉`);
-})
-
-// map() 메서드는 배열 내의 모든 요소 각각에 대하여 주어진 함수를 호출한 결과를 모아 새로운 배열을 반환
-const fullName = firstNames.map((el, idx) => el + lastNames[idx]);
-console.log(fullName);
-
-const array1 = [1, 4, 9, 16];
-
-// pass a function to map
-const map1 = array1.map(x => x * 2);
-
-console.log(map1);
-
-// filter, find
-// 조건에 맞는 여러개를 배열에 담는다 => 새로운 배열을 리턴, 조건에 맞는 단 하나를 리턴 = >가장 첫번째 요소를 리턴
-
-// every, some
-
-
-/** 새로운 배열을 리턴 */
-// 1. 자르기 : slice(시작인덱스, 끝인덱스 -1(자기자신 미포함))
-const food = ['🍕', '🍔', '🌭', '🍩'];
-let newArr = food.slice();
-let newArr2 = food.slice(1, 3);
-let newArr3 = food.slice(1);    // 종료 인덱스 안주면 시작인덱스 ~ 끝까지
-let newArr4 = food.slice(-2);
-console.log(food);
-console.log(newArr);        //  [ '🍕', '🍔', '🌭', '🍩' ]
-console.log(newArr2);       //  ['🍔', '🌭' ]
-console.log(newArr3);       //  [ '🍔', '🌭', '🍩' ]
-console.log(newArr4);       //  [ '🌭', '🍩' ]
-
-// 2. 붙이기 : contact 
-const arr1 = ['H', 'E'];
-const arr2 = ['L', 'L', 'O'];
-const concatArr = arr1.concat(arr2);
-console.log(concatArr);          // [ 'H', 'E', 'L', 'L', 'O' ]
-
-// 3. 순서 뒤집기 : reverse
-const reverseArr = concatArr.reverse();
-console.log(reverseArr);        // [ 'O', 'L', 'L', 'E', 'H' ]
-
-// 4. 중첩배열 펼치기 : flat
-const sample = [ [1, 2,], 3, [4, [5, 6]]];
-const flatArr = sample.flat();
-const flatArr2 = flatArr.flat();
-console.log(flatArr);           // [ 1, 2, 3, 4, [ 5, 6 ] ]
-console.log(flatArr2);          // [ 1, 2, 3, 4, 5, 6 ]
-
-
-/** 새로운 배열을 리턴 */
-// 1. 자르기 : slice(시작인덱스, 끝인덱스 -1(자기자신 미포함))
-const food = ['🍕', '🍔', '🌭', '🍩'];
-let newArr = food.slice();
-let newArr2 = food.slice(1, 3);
-let newArr3 = food.slice(1);    // 종료 인덱스 안주면 시작인덱스 ~ 끝까지
-let newArr4 = food.slice(-2);
-console.log(food);
-console.log(newArr);        //  [ '🍕', '🍔', '🌭', '🍩' ]
-console.log(newArr2);       //  ['🍔', '🌭' ]
-console.log(newArr3);       //  [ '🍔', '🌭', '🍩' ]
-console.log(newArr4);       //  [ '🌭', '🍩' ]
-
-// 2. 붙이기 : contact 
-const arr1 = ['H', 'E'];
-const arr2 = ['L', 'L', 'O'];
-const concatArr = arr1.concat(arr2);
-console.log(concatArr);          // [ 'H', 'E', 'L', 'L', 'O' ]
-
-// 3. 순서 뒤집기 : reverse
-const reverseArr = concatArr.reverse();
-console.log(reverseArr);        // [ 'O', 'L', 'L', 'E', 'H' ]
-
-// 4. 중첩배열 펼치기 : flat
-const sample = [ [1, 2,], 3, [4, [5, 6]]];
-const flatArr = sample.flat();
-const flatArr2 = flatArr.flat();
-console.log(flatArr);           // [ 1, 2, 3, 4, [ 5, 6 ] ]
-console.log(flatArr2);          // [ 1, 2, 3, 4, 5, 6 ]
+const user = new User('jishu', 'macbook');
+user.email = 'shu@naver.com'
+// console.log(user.email)
+// user.buy('macbook');
+// user.email = 'shushu';
+console.log(Puser1);
+Puser1.streamMusicForFree()
+Puser1.buy('book')
