@@ -22,9 +22,9 @@
  */
 
 class User{
-    constructor(name, item){
+    constructor(name, email){
         this.name = name;
-        this.item = item;
+        this.email = email;
     }
     buy(item){
         console.log(`${this.name} bought ${item}`);
@@ -54,14 +54,25 @@ class PremiumUser extends User{
 }
 
 const Puser1 = new PremiumUser('gu', 'gu@naver.com', 1);
-const Puser2 = new PremiumUser('gu', 'gu@naver.com', 1);
-const Puser3 = new PremiumUser('gu', 'gu@naver.com', 1);
+const Puser2 = new PremiumUser('gufu', 'gufu@naver.com', 2);
+const Puser3 = new PremiumUser('gusy', 'gusy@naver.com', 3);
 
-const user = new User('jishu', 'macbook');
-user.email = 'shu@naver.com'
+const user1 = new User('jishu', 'macbook@naver.com');
+const user2 = new User('hhhh', 'macbogg@naver.com');
+const user3 = new User('gg', 'ttt@naver.com');
+// user.email = 'shu@naver.com'
 // console.log(user.email)
 // user.buy('macbook');
 // user.email = 'shushu';
-console.log(Puser1);
-Puser1.streamMusicForFree()
-Puser1.buy('book')
+
+const users = [user1, Puser1, user2, Puser2, user3, Puser3];
+
+const item = {
+    name: '스웨터',
+    price: 30000,
+  };
+
+users.forEach((user) => {
+    user.buy(item);
+  });
+
