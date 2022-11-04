@@ -1,54 +1,64 @@
-// 한줄짜리 주석을 작성
-// WHY HOW
+// 함수의 순서 -> 콜스택
+// 외부의 변수를 참조하는 방법
 
-/**
- * 
- * @param {*} a 숫자1 
- * @param {*} b 숫자2
- * @returns a, b를 더한 값
- */
-function add(a, b){
-    return a + b; 
-};
+// 메모리 힙, 콜스택 => 하나의 실긍  컨텍스트 스택 = 실행 컨텍스트 스택 
+// 메모리힙, 콜스택, 테스크큐 이벤트루트를 돌면서 해당이벤트를 하면 콜스택에 하나씩 쌓이는 거야
+
+// 전역스코프
 
 
-function printMembers(members){
-    try {
-        for (const member of members){
-            console.log(member);
-        }
-    } catch(err){
-        console.error(err);
-        alert(`${err.name}이 발생했습니다.`)
+const text = 'hello';
+function func(){
+    console.log(text)
+}
+func();
+
+
+
+function outer(){
+    const x = 0;
+    function inner(){
+        console.log(`inside inner: ${x}`)
     }
+    return inner;
 }
 
-function readFile(path) {
-    throw new Error('경로 모르겠어요');
-    return '파일의 내용';
-};
+const func1 = outer();
+func1();
 
-function processFile(path){
-    // const content = readFile(path);
-    // const result = 'hi' + content;
-    // return result;
-    let content;
-    try {
-        content = readFile(path);
-    } catch (err) {
-        console.log(err.name);
-        console.log(err.message);
-        console.log(err.stack);
-        content = '기본내용'
-    } finally {
-        console.log('22333')
+
+// 내부 정보를 은닉하고, 공개함수를 통한 데이터 조작을 위해 
+// 캡슐화와 정보은닉
+// 클래스 private 필드 또는 메소드를 사용하는 효과와 동일
+
+
+function makeCOunter(){
+    let count = 0;
+    function increase(){
+        count++;
+        console.log(count);
     }
-    return content;
-};
+    return increase;
+}
 
-// const result = processFile('경로');
-console.log(result);
+const increase = makeCOunter();
+increase();
+increase();
+increase();
 
 
 
+// 클래스를 사용하기 
+
+class Counter{
+    #count = 0;
+    increase(){
+        this.#count++;
+        console.log('❤',this.#count)
+    }
+}
+const counter = new Counter();
+counter.increase();
+counter.increase();
+counter.increase();
 
