@@ -53,3 +53,6 @@ function printMonitoring(printName){
 }
 
 printMonitoring(cat.printName);
+
+printMonitoring(cat.printName);
+
